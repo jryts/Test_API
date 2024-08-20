@@ -10,7 +10,7 @@ namespace Test.Api.Data
 		private readonly string? _conString;
 		public ImportData(string conString)
 		{
-			_dirPath = Directory.GetCurrentDirectory() + "\\Migrations\\pizza_data\\"; //. AppDomain.CurrentDomain.BaseDirectory;
+			_dirPath = Directory.GetCurrentDirectory() + "\\Data\\pizza_data\\"; //. AppDomain.CurrentDomain.BaseDirectory;
 			_conString = conString;
 		}
 
