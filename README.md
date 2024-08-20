@@ -15,7 +15,7 @@ Download csv file from https://www.kaggle.com/datasets/mysarahmadbhat/pizza-plac
 
 # How this API work
 1. First Clone or download code files.
-2. Configure SQL Server and create database named Pizza
+2. Configure SQL Server and create database named Pizza_Place_Sales
 3. Open project in Visual Studio
 4. Add all necessary class files to match with the db table schema were inside this folder /Domain/Entities
    Pizza.cs, Pizza_Type.cs, Order.cs and Order_Detail.cs
