@@ -39,7 +39,14 @@ builder.Services.AddDbContext<TestDbContext>(x =>
 
 var app = builder.Build();
 
-
+//optimize swagger UI performance to load huge data reponse from api
+app.UseSwaggerUI(config =>
+{
+	config.ConfigObject.AdditionalItems["syntaxHighlight"] = new Dictionary<string, object>
+	{
+		["activated"] = false
+	};
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
