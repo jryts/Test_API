@@ -68,6 +68,11 @@ namespace Test.Api.Data
 				}
 			}
 		}
+
+		public void DropTables()
+		{
+
+		}
 		
 		public bool HasEmptyData()
 		{ 

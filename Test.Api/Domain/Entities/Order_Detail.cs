@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Test.Api.Domain.Entities
 {
     [Table("order_details")]
-    public class Order_Detail
+    public record Order_Detail
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
