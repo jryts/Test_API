@@ -63,7 +63,14 @@ namespace Test.Api.Data
 				foreach (FileInfo file in files)
 				{
 					string csvFileName = file.Name.Replace(file.Extension, "");
-					using var cmd = new SqlCommand("delete from " + csvFileName, con);
+					string sqlString = @"IF (EXISTS (SELECT * 
+														 FROM INFORMATION_SCHEMA.TABLES 
+														 WHERE TABLE_SCHEMA = 'dbo' 
+														 AND  TABLE_NAME = '{0}'))
+										BEGIN
+											DELETE FROM {0}
+										END";
+					using var cmd = new SqlCommand(string.Format(sqlString,csvFileName), con);
 					cmd.ExecuteNonQuery();
 				}
 			}
@@ -84,7 +91,14 @@ namespace Test.Api.Data
 				foreach (FileInfo file in files)
 				{
 					string csvFileName = file.Name.Replace(file.Extension, "");
-					using var cmd = new SqlCommand("select count(*) from " + csvFileName, con);
+					string sqlString = @"IF (EXISTS (SELECT * 
+														 FROM INFORMATION_SCHEMA.TABLES 
+														 WHERE TABLE_SCHEMA = 'dbo' 
+														 AND  TABLE_NAME = '{0}'))
+										BEGIN
+											SELECT COUNT(*) FROM {0}
+										END";
+					using var cmd = new SqlCommand(string.Format(sqlString,csvFileName), con);
 					var obj = cmd.ExecuteScalar();
 					int results = Convert.ToInt32(obj);
 					if(results == 0)
